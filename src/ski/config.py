@@ -6,6 +6,7 @@ from typing import Any, Dict, Optional
 from pydantic import BaseModel
 import yaml
 
+
 class AnimationSettings(BaseModel):
     gpx_file: Path
     output: str = "animation.fcpxml"
@@ -50,5 +51,3 @@ class SettingsFactory:
         merged["interpolation_step"] = float(merged["interpolation_step"])
 
         return AnimationSettings(**merged)
-
-

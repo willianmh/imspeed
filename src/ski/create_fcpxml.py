@@ -34,12 +34,15 @@ def _create_titles(
         for i, point in enumerate(points):
             if initial_time < point.time:
                 # sync point is before an existing point
-                points.insert(i, SpeedPoint(
-                    time=initial_time,
-                    lat=point.lat,
-                    lon=point.lon,
-                    ele=point.ele,
-                ))
+                points.insert(
+                    i,
+                    SpeedPoint(
+                        time=initial_time,
+                        lat=point.lat,
+                        lon=point.lon,
+                        ele=point.ele,
+                    ),
+                )
                 start_idx = i
                 break
             elif initial_time == point.time:
@@ -57,14 +60,14 @@ def create_fcpxml(settings: AnimationSettings):
     raw_points = collect_points(
         gpx=gpx_file.gpx, track_id=settings.track, segment_id=settings.segment
     )
-    
+
     if settings.interpolate:
         raw_points = interpolate_distances(raw_points, step_seconds=0.05)
-    
+
     points = calculate_speed(raw_points, smooth_window=25)
 
     titles = _create_titles(points=points, template=settings.template)
-    
+
     duration = timedelta(seconds=settings.duration) if settings.duration else None
 
     project_title = Path(settings.output).stem

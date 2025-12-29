@@ -1,0 +1,27 @@
+[project]
+name = "ski"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "geopy>=2.4.1",
+    "gpxpy>=1.6.2",
+    "ipykernel>=7.1.0",
+    "numpy>=2.4.0",
+    "pyaml>=25.7.0",
+    "pydantic>=2.12.5",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.10",
+    "pytest>=9.0.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
+
+[project.scripts]
+create_fcpxml = "ski.create_fcpxml:main"

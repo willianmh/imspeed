@@ -1,15 +1,9 @@
-from .model import (
-    RGBAColor,
-    ShadowOffset,
-    ShadowProperties,
-    FontStyle,
-    TitleShape
-)
+from .model import RGBAColor, ShadowOffset, ShadowProperties, FontStyle, TitleShape
 
 __all__ = [
     "RGBAColor",
     "ShadowOffset",
     "ShadowProperties",
     "FontStyle",
-    "TitleShape",    
+    "TitleShape",
 ]

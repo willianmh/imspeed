@@ -1,0 +1,7 @@
+gpx_file: data/gpx/15122025_axamer_lizum_runs.gpx
+output: out/speed.fcpxml
+track: 0
+segment: 21
+interpolate: true
+interpolation_step: 0.25
+fps: 30

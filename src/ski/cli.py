@@ -28,16 +28,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="Output file",
     )
     parser.add_argument(
-        "--track",
-        type=int,
-        default=None,
-        help="Select track id <track>."
+        "--track", type=int, default=None, help="Select track id <track>."
     )
     parser.add_argument(
         "--segment",
         type=int,
         default=None,
-        help="Select the segment with id <segment> from track <track>."
+        help="Select the segment with id <segment> from track <track>.",
     )
     parser.add_argument(
         "--template",
@@ -51,7 +48,7 @@ def build_parser() -> argparse.ArgumentParser:
         dest="interpolate",
         action=argparse.BooleanOptionalAction,
         default=None,
-        help="Linearly interpolate positions between GPX timestamps",
+        help="Interpolate positions between GPX timestamps",
     )
     parser.add_argument(
         "--interpolation-step",
@@ -65,7 +62,7 @@ def build_parser() -> argparse.ArgumentParser:
         dest="duration",
         type=float,
         default=None,
-        help="Handfull control to limit duration of produced file.",
+        help="Handfull control to limit duration (in seconds) of produced file.",
     )
     parser.add_argument(
         "-f",
