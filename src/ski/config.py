@@ -44,10 +44,10 @@ class SettingsFactory:
         merged: Dict[str, Any] = {**file_config, **cli_overrides}
 
         if not merged.get("gpx_file"):
-            raise ValueError("GPX file path is required (provide via CLI or config).")
+            raise ValueError("GPX file path is required (provide via CLI or config). Run with -h.")
 
         merged["gpx_file"] = Path(merged["gpx_file"])
         merged["interpolate"] = bool(merged.get("interpolate"))
-        merged["interpolation_step"] = float(merged["interpolation_step"])
+        # merged["interpolation_step"] = float(merged["interpolation_step"])
 
         return AnimationSettings(**merged)

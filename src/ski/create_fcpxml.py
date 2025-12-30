@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import logging
 from pathlib import Path
 from typing import List
 
@@ -13,9 +14,11 @@ from ski.gpx import (
     collect_points,
     interpolate_distances,
 )
+from ski.logger import get_logger, setup_logger
 from ski.resources.templates import TemplateRegistry
 from ski.utils import FileWriter
 
+logger = get_logger()
 
 def _create_titles(
     points: List[SpeedPoint],
@@ -62,7 +65,8 @@ def create_fcpxml(settings: AnimationSettings):
     )
 
     if settings.interpolate:
-        raw_points = interpolate_distances(raw_points, step_seconds=0.05)
+        logger.debug(f"Interpolation with step: {settings.interpolation_step}")
+        raw_points = interpolate_distances(raw_points, step_seconds=settings.interpolation_step)
 
     points = calculate_speed(raw_points, smooth_window=25)
 
@@ -80,14 +84,17 @@ def create_fcpxml(settings: AnimationSettings):
     )
 
     FileWriter.write(settings.output, xml)
+    logger.info(f"File saved at: {settings.output}")
 
 
 def main():
     args = parse_args()
     try:
         settings = build_settings(args)
+        setup_logger(logging.DEBUG if args.verbose else logging.INFO)
+
     except Exception as exc:
-        print(f"Error: {exc}")
+        logger.error(f"{exc}")
         return
 
     create_fcpxml(settings=settings)

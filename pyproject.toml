@@ -8,6 +8,7 @@ dependencies = [
     "geopy>=2.4.1",
     "gpxpy>=1.6.2",
     "ipykernel>=7.1.0",
+    "loguru>=0.7.3",
     "numpy>=2.4.0",
     "pyaml>=25.7.0",
     "pydantic>=2.12.5",

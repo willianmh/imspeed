@@ -62,7 +62,7 @@ def build_parser() -> argparse.ArgumentParser:
         dest="duration",
         type=float,
         default=None,
-        help="Handfull control to limit duration (in seconds) of produced file.",
+        help="Handful control to limit duration (in seconds) of produced file.",
     )
     parser.add_argument(
         "-f",
@@ -71,6 +71,12 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=None,
         help="Frames per second",
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action='store_true',
+        help="Increase output verbosity."
     )
     return parser
 
